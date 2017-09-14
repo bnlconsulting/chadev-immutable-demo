@@ -1,0 +1,13 @@
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+*.retry
+ansible.cfg
+build.*
+manifest.json
+credentials.tf
+*.swp
+*.pwd
+*.pwi
+*.hwm
+

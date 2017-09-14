@@ -1,0 +1,59 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+alias snano='sudo nano'
+alias sv='sudo vim'
+alias update='sudo yum update'
+alias ins='sudo yum -y install'
+alias sd='sudo systemctl'
+alias daemon-reload='sudo systemctl daemon-reload'
+alias rbt='sudo shutdown -r now'
+alias shutdown='sudo shutdown now'
+#alias docker='sudo docker'
+alias imageclean='docker rmi $(docker images | grep none | sed "s/[ ]* /:/g" | cut -f3 -d:)'
+alias bashrc='vim ~/.bashrc'
+alias sbash='source ~/.bashrc'
+
+## change directory and copy commands
+alias ..='cd ..'
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias rsm='rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files'
+alias rcopy='rsync --partial --progress --append --rsh=ssh -r -h'
+alias ls='ls --color=auto'
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# default PS1
+#PS1='(\u:\h), \W, '
+
+#Fancy PS1
+PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\h]\[\e[0m\]\[\e[0;36m\]─\[\e[0;93m\](\w)\n\[\e[0;36m\]└─\[\e[1;32m\][\A]\[\e[0m\]\$ '
+
+#extract script: just type extract *, where * is a compressed file
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+ }

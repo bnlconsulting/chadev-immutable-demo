@@ -1,0 +1,8 @@
+{
+  "project": "chadev",
+  "region": "us-east-1",
+  "centos_ami": "ami-6d1c2007",
+  "instance_size": "m3.medium",
+  "ansible_path": "../ansible/",
+  "kms_key": "bf7f4058-d371-4185-b15d-56f83c42a7f3"
+}

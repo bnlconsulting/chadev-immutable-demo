@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: yes
+  remote_user: centos
+  become: true
+  vars_files:
+    - variables.yml
+  roles:
+    - users
+    - epel
+    - packages
+    - docker

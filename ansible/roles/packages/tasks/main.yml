@@ -1,0 +1,5 @@
+---
+- name: Install Useful Packages
+  yum:
+    name: htop,vim,mlocate,bind-utils
+    state: installed

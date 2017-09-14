@@ -1,0 +1,14 @@
+---
+- name: Creating user jay
+  user: name=jay groups=wheel append=yes
+
+- name: Place Jay's bashrc
+  copy: src=files/rhel_bashrc dest=/home/jay/.bashrc backup=yes
+
+- name: Adding Jay's public key to authorized_keys
+  authorized_key:
+    user: jay
+    key: "{{lookup('file', 'files/jay.pub')}}"
+
+- name: Allow jay to use sudo without password
+  lineinfile: "dest=/etc/sudoers line='jay ALL=(ALL) NOPASSWD: ALL'"
