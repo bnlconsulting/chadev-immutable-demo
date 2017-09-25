@@ -9,6 +9,9 @@ RUN dnf install -y vim git unzip ansible wget \
 	&& unzip /opt/terraform_0.10.0_linux_amd64.zip -d /root/bin \
 	&& rm -f /opt/*.zip \
 	&& chmod u+x /root/bin/packer \
-	&& chmod u+x /root/bin/terraform
+	&& chmod u+x /root/bin/terraform \
+	&& mkdir /root/chadev-immutable-demo
+
+WORKDIR /root/chadev-immutable-demo
 
 ENTRYPOINT ["/bin/bash"]
