@@ -1,7 +1,7 @@
 {
   "variables": {
   	"name": "docker-node",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"comment": "centos 7.3 with docker, users and common packages",
   	"iam_profile": "project-hydra-server"
   },
