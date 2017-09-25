@@ -1,7 +1,7 @@
 ## Immutable Deployment with ansible, packer, & terraform
 # Chadev demo
 
-This repo contains the source files for a demo talk by Jay Baker on using ansible, packer, and terraform for Immutable server deployment.
+This repo contains the source files for a demo talk by Jay Baker on using ansible, packer, and terraform for Immutable server deployment. The video can be seen here: https://www.youtube.com/watch?v=kNhkkZkKyW0
 
 It's focused around AWS, but the principles will apply to any cloud platform that terraform supports (though the terraform config will have to be changed if you use a different provider).
 
@@ -11,9 +11,17 @@ NOTE: AWS is not free! This demo just uses a single server so it shouldn't cost 
 
 ## Usage
 
-The general workflow for this repository is a basic pipeline:
+To get started, you will need ansible, packer, and terraform installed on your local machine. Alternatively, you can use the included `Dockerfile` to build a Fedora based image with the tools already installed.
 
-ansible -> packer -> terraform
+To do so:
+
+```
+$ git clone https://github.com/bnlconsulting/chadev-immutable-demo
+$ cd chadev-immutable-demo
+$ docker build -t “immutable-demo” .
+$ docker run -it -e "AWS_ACCESS_KEY_ID=<your access key>" -e "AWS_SECRET_ACCESS_KEY=<your secret access key>" -e "AWS_DEFAULT_REGION=us-east-1" -v <path to git repo>:/root/chadev-immutable-demo
+ immutable-demo
+```
 
 # Ansible
 Ansible is a configuration management tool, written in python, which uses YAML as its configuration language. The `ansible` directory contains various "playbooks," which describe what roles to apply to a given server. the `ansible/roles` directory contains collections of playbooks which are used to add functionality or configure a server in a certain way.
